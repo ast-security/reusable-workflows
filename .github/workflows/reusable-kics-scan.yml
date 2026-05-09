@@ -107,7 +107,7 @@ on:
         description: Upload SARIF to GitHub code scanning.
         required: false
         type: boolean
-        default: true
+        default: false
       upload_artifacts:
         description: Upload KICS output folder as artifact.
         required: false
