@@ -57,7 +57,7 @@ on:
         description: Comma-separated output formats (json,sarif,junit,html,pdf,cyclonedx,sonarqube).
         required: false
         type: string
-        default: "json,sarif"
+        default: "json"
       output_path:
         description: Output folder for scan artifacts.
         required: false
@@ -197,9 +197,3 @@ jobs:
           path: ${{ inputs.output_path }}
           retention-days: ${{ inputs.artifact_retention_days }}
 
-      - name: Upload SARIF to code scanning
-        if: ${{ always() && inputs.upload_sarif && contains(inputs.output_formats, 'sarif') }}
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: ${{ inputs.output_path }}
-          category: kics
